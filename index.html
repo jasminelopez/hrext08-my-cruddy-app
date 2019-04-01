@@ -6,46 +6,110 @@
 	<script
 		src="https://code.jquery.com/jquery-3.3.1.js"
 		integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-		crossorigin="anonymous"></script>
+		crossorigin="anonymous">
+	</script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+		crossorigin="anonymous">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 	<div class="container">
+		<div class="row">
+			<div class="col">
+				<table class="table table-hover">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">Recipe</th>
+							<th scope="col">Ingredients</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>test key</td>
+							<td>test value</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
 		<form action="" method="" class="form">
-			<div class="form">
-				<label for="key">Enter key: </label>
-				<input type="text" name="key" id="key" required>
+			<div class="row">
+				<div class="col">
+					<div class="form-group">
+						<label for="recipeInput">Recipe</label>
+						<input type="recipe" class="form-control" id="recipeName" aria-describedby="recipeInstruction" placeholder="Recipe name">
+						<small id="recipeInstruction" class="form-text text-muted">Add and track your favorite recipes!</small>
+					</div>
+				</div>
 			</div>
-			<div class="form">
-				<label for="value">Enter value: </label>
-				<input type="text" name="value" id="value" required>
+			<div class="container">
+				<div class="row">
+					
+				</div>
+
 			</div>
-			<div class="form">
-				<button class="button" id="btn-create" type="button">Create</button>
-				<button class="button" id="btn-update" type="button">Update</button>
-				<button class="button" id="btn-delete" type="button">Delete</button>
+			<div class="row">
+				<div class="col">
+					<div class="form-group">
+						<label for="recipeIngredients">Ingredients</label>
+						<input type="ingredients" class="form-control" id="recipeIngredients" placeholder="Ingredient">
+					</div>
+				</div>
+			</div>
+			<div class="form-quantity">
+				<label for="quantity">Quantity</label>
+				<select class="form-quan" id="formQuantity">
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+					<option>4</option>
+					<option>5</option>
+				</select>
+			</div>
+			<div class="form-measurement">
+				<label for="measurement">Measurement</label>
+				<select class="form-measure" id="formMeasure">
+					<option>teaspoon</option>
+					<option>tablespoon</option>
+					<option>cup</option>
+					<option>quart</option>
+				</select>
+			</div>			 
+			<div class="row">
+				<div class="col">
+					<div class="form-group">
+						<button class="button btn btn-outline-success" id="btn-add" type="button">Add</button>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<div class="form-group">
+						<button class="button btn btn-outline-primary" id="btn-create" type="button">Submit Recipe</button>
+						<button class="button btn btn-outline-primary" id="btn-update" type="button">Update Recipe</button>
+						<button class="button btn btn-outline-danger" id="btn-delete" type="button">Delete</button>
+					</div>
+				</div>
 			</div>
 			<!-- clear button? -->
 		</form>	
-		<table>
-			<thead>
-				<tr>
-					<th>Key</th>
-					<th>Value</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>test key</td>
-					<td>test value</td>
-				</tr>
-			</tbody>
-		</table>
 	</div>
-	<div id="statusLabel">Status:</div>
 
 	<script src="app/app.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+		crossorigin="anonymous">
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" 
+		crossorigin="anonymous">
+		</script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" 
+		crossorigin="anonymous">
+	</script>
   <!--
    table to view data
 

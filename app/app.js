@@ -10,6 +10,21 @@ var loadLocalStorage = function () {
 var updateStatusLabel = function(message) {
 	$('#statusLabel').text('Status: ' + message);
 }
+var createEntry = function(key, value) {
+	return localStorage.setItem(key, value);
+}
+
+////Update existing entry
+//localStorage.setItem(key, value)
+var updateEntry = function(key, value) {
+	return localStorage.setItem(key, value);
+}
+
+////delete existing entry
+//localStorage.removeItem(key)
+var removeEntry = function(key) {
+	return localStorage.removeItem(key);
+}
 
  //jQuery document ready initialization stuff
  ////button and form event handlers
@@ -18,54 +33,54 @@ $(document).ready(function () {
 	loadLocalStorage();
 
 	$('#btn-create').on('click', function(e) {
-		var key = $('#key').val();
-		var value = $('#value').val();
+		var key = $('#recipeName').val();
+		var value = $('#recipeIngredients').val();
 		var keyExists = localStorage.getItem(key) !== null;
 
 		if (keyExists) {
-			updateStatusLabel('key already exists, please use update button instead! :D');
+			updateStatusLabel('Recipe already exists, please use update button instead! :D');
 		} else if (key === '') {
 			updateStatusLabel('invalid input!')
 		}else {
 			createEntry(key, value);
-			updateStatusLabel('key created - ' + key);
+			updateStatusLabel('Recipe created - ' + key);
 		}
 
 		loadLocalStorage();
 	});
 
 	$('#btn-update').on('click', function(e) {
-		var key = $('#key').val();
-		var value = $('#value').val();
+		var key = $('#recipeName').val();
+		var value = $('#recipeIngredients').val();
 		var existingValue = localStorage.getItem(key)
 		var keyExists = existingValue !== null;
 
 		if (value === existingValue) {
-			updateStatusLabel('key not updated - that value already exists silly! xD')
+			updateStatusLabel('Recipe not updated - those same ingredients already exists silly! xD')
 		} else if (keyExists) {
 			updateEntry(key, value);
-			updateStatusLabel('key updated - ' + key);
+			updateStatusLabel('Recipe updated - ' + key);
 		} else if (key === '') {
 			updateStatusLabel('invalid input!')
 		} else {
-			updateStatusLabel('key doesn\'t exist, please use create button instead! :D');
+			updateStatusLabel('Recipe doesn\'t exist, please use create button instead! :D');
 		}		
 		
 		loadLocalStorage();		
 	});
 
 	$('#btn-delete').on('click', function(e) {
-		var key = $('#key').val();
-		var value = $('#value').val();
+		var key = $('#recipeName').val();
+		var value = $('#recipeIngredients').val();
 		var keyExists = localStorage.getItem(key) !== null;
 
 		if (keyExists) {
 			removeEntry(key);
-			updateStatusLabel('key removed - ' + key);
+			updateStatusLabel('Recipe removed - ' + key);
 		} else if (key === '') {
 			updateStatusLabel('invalid input!')
 		} else {
-			updateStatusLabel('key doesn\'t exist, nothing removed. :|');
+			updateStatusLabel('Recipe doesn\'t exist, nothing removed. :|');
 		}
 
 		loadLocalStorage();
@@ -92,18 +107,3 @@ PAGE CONTENT STUFF
 //https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
 ////create new entry
 //localStorage.setItem(key, value)
-var createEntry = function(key, value) {
-	return localStorage.setItem(key, value);
-}
-
-////Update existing entry
-//localStorage.setItem(key, value)
-var updateEntry = function(key, value) {
-	return localStorage.setItem(key, value);
-}
-
-////delete existing entry
-//localStorage.removeItem(key)
-var removeEntry = function(key) {
-	return localStorage.removeItem(key);
-}
