@@ -86,6 +86,28 @@ $(document).ready(function () {
 		loadLocalStorage();
 	});	
 
+	$('#btn-add').on('click', function(e) {
+		var ingredient = $('#recipeIngredients').val();
+		var quantity = $('#quantityAmnt').val();
+		var measurement = $('#measurement').val();
+
+		var ingredientExists = ingredient !== null;
+		var $ingredient = $(`<div class="col-sm-2"> 
+							  <div class="alert alert-success alert-dismissible fade show" role="alert"> 
+		  						<strong> ${quantity} ${measurement} ${ingredient} </strong> 
+		  							<button type="button" class="btn close" data-dismiss="alert" aria-label="Close"> 
+			  						<span aria-hidden="true">×</span> 
+									</button> 
+								</div>	
+							</div>`);
+
+		console.log($ingredient);
+		if (ingredientExists) {
+			$ingredient.prependTo( $('.ingredient-list') );
+		} 
+		//loadLocalStorage();
+	});	
+
 });
 /*
 

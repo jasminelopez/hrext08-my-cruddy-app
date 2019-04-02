@@ -36,7 +36,7 @@
 		</div>
 		<form action="" method="" class="form">
 			<div class="row">
-				<div class="col">
+				<div class="col-lg-6">
 					<div class="form-group">
 						<label for="recipeInput">Recipe</label>
 						<input type="recipe" class="form-control" id="recipeName" aria-describedby="recipeInstruction" placeholder="Recipe name">
@@ -44,46 +44,49 @@
 					</div>
 				</div>
 			</div>
-			<div class="container">
-				<div class="row">
+			
+			<div class="row ingredient-list">
 					
-				</div>
-
 			</div>
+
 			<div class="row">
-				<div class="col">
+				<div class="col-lg-3">
 					<div class="form-group">
 						<label for="recipeIngredients">Ingredients</label>
 						<input type="ingredients" class="form-control" id="recipeIngredients" placeholder="Ingredient">
 					</div>
 				</div>
+				<div class="col-lg-1">
+					<label for="form-quantity">Quantity</label>
+					<select class="form-control" id="quantityAmnt">
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+					</select>
+				 </div>
+				 <div class="col-sm-2">
+					<label for="formMeasurement">Measurement</label>
+					<select class="form-control" id="measurement">
+						<option>tsp(s)</option>
+						<option>Tbs(s)</option>
+						<option>cup(s)</option>
+						<option>ounce(s)</option>
+					</select>
+				</div>
 			</div>
-			<div class="form-quantity">
-				<label for="quantity">Quantity</label>
-				<select class="form-quan" id="formQuantity">
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-					<option>4</option>
-					<option>5</option>
-				</select>
-			</div>
-			<div class="form-measurement">
-				<label for="measurement">Measurement</label>
-				<select class="form-measure" id="formMeasure">
-					<option>teaspoon</option>
-					<option>tablespoon</option>
-					<option>cup</option>
-					<option>quart</option>
-				</select>
-			</div>			 
+
 			<div class="row">
 				<div class="col">
 					<div class="form-group">
-						<button class="button btn btn-outline-success" id="btn-add" type="button">Add</button>
+						<button class="button btn btn-outline-success" id="btn-add" type="button">Add Ingredient</button>
 					</div>
 				</div>
 			</div>
+
+			<hr>
+
 			<div class="row">
 				<div class="col">
 					<div class="form-group">
