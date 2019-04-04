@@ -31,11 +31,17 @@ var removeEntry = function(key) {
  // logic for determining action probably needs to go in the event handler
 $(document).ready(function () {
 	loadLocalStorage();
+	var ingredientList = [];
 
 	$('#btn-create').on('click', function(e) {
+		var ingredients= $('strong.recipeString').text();
+		var instructions = $('#textbox').val();
+		console.log(instructions);
 		var key = $('#recipeName').val();
-		var value = $('#recipeIngredients').val();
+		var value = `${ingredients} \n ${instructions}`;
+		console.log(value);
 		var keyExists = localStorage.getItem(key) !== null;
+
 
 		if (keyExists) {
 			updateStatusLabel('Recipe already exists, please use update button instead! :D');
@@ -64,9 +70,9 @@ $(document).ready(function () {
 			updateStatusLabel('invalid input!')
 		} else {
 			updateStatusLabel('Recipe doesn\'t exist, please use create button instead! :D');
-		}		
-		
-		loadLocalStorage();		
+		}
+
+		loadLocalStorage();
 	});
 
 	$('#btn-delete').on('click', function(e) {
@@ -84,7 +90,7 @@ $(document).ready(function () {
 		}
 
 		loadLocalStorage();
-	});	
+	});
 
 	$('#btn-add').on('click', function(e) {
 		var ingredient = $('#recipeIngredients').val();
@@ -92,22 +98,26 @@ $(document).ready(function () {
 		var measurement = $('#measurement').val();
 
 		var ingredientExists = ingredient !== null;
-		var $ingredient = $(`<div class="col-sm-2"> 
-							  <div class="alert alert-success alert-dismissible fade show" role="alert"> 
-		  						<strong> ${quantity} ${measurement} ${ingredient} </strong> 
-		  							<button type="button" class="btn close" data-dismiss="alert" aria-label="Close"> 
-			  						<span aria-hidden="true">×</span> 
-									</button> 
-								</div>	
-							</div>`);
+		var $ingredient = $(`<div id="myAlert" class="col-sm-1.5 alert alert-success alert-dismissible fade show" role="alert">
+		  						<strong class="recipeString"> ${quantity} ${measurement} ${ingredient} \n </strong>
+		  						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			  						<span aria-hidden="true">&times;</span>
+								  </button>
+							    </div>`);
 
-		console.log($ingredient);
 		if (ingredientExists) {
 			$ingredient.prependTo( $('.ingredient-list') );
-		} 
-		//loadLocalStorage();
-	});	
+		}
+		var ingredients = $('strong.recipeString').text();
+		setupClickEvents();
+	});
 
+	  var setupClickEvents = function () {
+	  $('#myAlert').on('closed.bs.alert', function () {
+		//takes the text and adjusts it when its deleted
+		var ingredients = $('strong.recipeString').text();
+		 });
+	};
 });
 /*
 

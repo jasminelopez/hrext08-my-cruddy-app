@@ -8,8 +8,8 @@
 		integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
 		crossorigin="anonymous">
 	</script>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
-		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 		crossorigin="anonymous">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
@@ -44,10 +44,8 @@
 					</div>
 				</div>
 			</div>
-			
-			<div class="row ingredient-list">
-					
-			</div>
+
+			<div class="row ingredient-list"></div>
 
 			<div class="row">
 				<div class="col-lg-3">
@@ -64,15 +62,20 @@
 						<option>3</option>
 						<option>4</option>
 						<option>5</option>
+						<option>6</option>
+						<option>7</option>
+						<option>8</option>
 					</select>
 				 </div>
 				 <div class="col-sm-2">
 					<label for="formMeasurement">Measurement</label>
 					<select class="form-control" id="measurement">
+						<option></option>
 						<option>tsp(s)</option>
 						<option>Tbs(s)</option>
 						<option>cup(s)</option>
 						<option>ounce(s)</option>
+						<option>pound(s)</option>
 					</select>
 				</div>
 			</div>
@@ -82,6 +85,15 @@
 					<div class="form-group">
 						<button class="button btn btn-outline-success" id="btn-add" type="button">Add Ingredient</button>
 					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="form-group">
+						<label for="recipeInstructions">Instructions</label>
+						<textarea class="form-control instructions" id="textbox" rows="3"></textarea>
+					  </div>
 				</div>
 			</div>
 
@@ -97,20 +109,20 @@
 				</div>
 			</div>
 			<!-- clear button? -->
-		</form>	
+		</form>
 	</div>
 
 	<script src="app/app.js"></script>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
-		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous">
 	</script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
-		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
 		crossorigin="anonymous">
 		</script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
-		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" 
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous">
 	</script>
   <!--
