@@ -2,7 +2,8 @@ var loadLocalStorage = function () {
 	var keys = Object.keys(localStorage)
 	var htmlString = '';
 	for (var i = 0; i < keys.length; i++) {
-		htmlString += `<tr><td>${keys[i]}</td><td>${localStorage[keys[i]]}</tr></tr>`;
+		htmlString += `<tr><td class="recipeTitle">${keys[i]} <hr> <button class="button btn btn-danger" id="btn-delete" type="button">Delete</button>
+		</td><td class="tableCell">${localStorage[keys[i]]} </tr></tr>`;
 	}
 	$('tbody').html(htmlString)
 };
@@ -10,48 +11,49 @@ var loadLocalStorage = function () {
 var updateStatusLabel = function(message) {
 	$('#statusLabel').text('Status: ' + message);
 }
+
 var createEntry = function(key, value) {
 	return localStorage.setItem(key, value);
 }
 
-////Update existing entry
-//localStorage.setItem(key, value)
 var updateEntry = function(key, value) {
 	return localStorage.setItem(key, value);
 }
 
-////delete existing entry
-//localStorage.removeItem(key)
 var removeEntry = function(key) {
 	return localStorage.removeItem(key);
 }
 
- //jQuery document ready initialization stuff
- ////button and form event handlers
- // logic for determining action probably needs to go in the event handler
 $(document).ready(function () {
 	loadLocalStorage();
 	var ingredientList = [];
 
-	$('#btn-create').on('click', function(e) {
+	$('#btn-submitRecipe').on('click', function(e) {
 		var ingredients= $('strong.recipeString').text();
+		console.log(ingredients);
+		//instructions text - won't wrap in the table
 		var instructions = $('#textbox').val();
-		console.log(instructions);
 		var key = $('#recipeName').val();
-		var value = `${ingredients} \n ${instructions}`;
-		console.log(value);
-		var keyExists = localStorage.getItem(key) !== null;
+		var $deleteButton = $('<button class="button btn btn-danger" id="btn-delete" type="button">Delete</button>');
+		var value = `${ingredients} <hr> ${instructions}`;
 
+		var keyExists = localStorage.getItem(key) !== null;
+		//this will clear the input boxes when the submit recipe button is hit
+		$('#recipeName').val('');
+		$('#textbox').val('');
+		$('.alert').remove();
+		$('#recipeIngredients').val('');
+		$('#measurement').prop('selectedIndex',0);
+		$('#quantityAmnt').prop('selectedIndex',0);
 
 		if (keyExists) {
 			updateStatusLabel('Recipe already exists, please use update button instead! :D');
 		} else if (key === '') {
 			updateStatusLabel('invalid input!')
-		}else {
+		} else {
 			createEntry(key, value);
 			updateStatusLabel('Recipe created - ' + key);
 		}
-
 		loadLocalStorage();
 	});
 
@@ -61,19 +63,31 @@ $(document).ready(function () {
 		var existingValue = localStorage.getItem(key)
 		var keyExists = existingValue !== null;
 
-		if (value === existingValue) {
-			updateStatusLabel('Recipe not updated - those same ingredients already exists silly! xD')
-		} else if (keyExists) {
-			updateEntry(key, value);
-			updateStatusLabel('Recipe updated - ' + key);
-		} else if (key === '') {
-			updateStatusLabel('invalid input!')
-		} else {
-			updateStatusLabel('Recipe doesn\'t exist, please use create button instead! :D');
-		}
+		// if (value === existingValue) {
+		// 	updateStatusLabel('Recipe not updated - those same ingredients already exists silly! xD')
+		// } else if (keyExists) {
+		// 	updateEntry(key, value);
+		// 	updateStatusLabel('Recipe updated - ' + key);
+		// } else if (key === '') {
+		// 	updateStatusLabel('invalid input!')
+		// } else {
+		// 	updateStatusLabel('Recipe doesn\'t exist, please use create button instead! :D');
+		// }
 
 		loadLocalStorage();
 	});
+
+	//specific delete element
+	$('table').on('click', '#btn-delete', function(e){
+		var key = $(this).parent('.recipeTitle').text();
+		for(var i = 0; i < key.length; i++) {
+			if(key[i] === 'D') {
+				key = key.slice(0, i - 2);
+			}
+		}
+		removeEntry(key);
+		$(this).closest('tr').remove();
+  });
 
 	$('#btn-delete').on('click', function(e) {
 		var key = $('#recipeName').val();
@@ -88,7 +102,7 @@ $(document).ready(function () {
 		} else {
 			updateStatusLabel('Recipe doesn\'t exist, nothing removed. :|');
 		}
-
+		$('#recipeName').val('');
 		loadLocalStorage();
 	});
 
@@ -99,7 +113,7 @@ $(document).ready(function () {
 
 		var ingredientExists = ingredient !== null;
 		var $ingredient = $(`<div id="myAlert" class="col-sm-1.5 alert alert-success alert-dismissible fade show" role="alert">
-		  						<strong class="recipeString"> ${quantity} ${measurement} ${ingredient} \n </strong>
+		  						<strong class="recipeString"> ${quantity} ${measurement} ${ingredient}  </strong>
 		  						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 			  						<span aria-hidden="true">&times;</span>
 								  </button>
@@ -108,17 +122,26 @@ $(document).ready(function () {
 		if (ingredientExists) {
 			$ingredient.prependTo( $('.ingredient-list') );
 		}
+		$('#measurement').prop('selectedIndex',0);
+		$('#quantityAmnt').prop('selectedIndex',0);
+
 		var ingredients = $('strong.recipeString').text();
+		$('#recipeIngredients').val('');
 		setupClickEvents();
 	});
 
-	  var setupClickEvents = function () {
-	  $('#myAlert').on('closed.bs.alert', function () {
-		//takes the text and adjusts it when its deleted
-		var ingredients = $('strong.recipeString').text();
-		 });
-	};
+		// var corgiFunction = function () {
+		// var keys = Object.keys(localStorage)
+		// console.log(keys.length);
+		//   if(keys.length === 5) {
+
+		//   }
+		// loadLocalStorage();
+		// }
+		// corgiFunction();
+
 });
+
 /*
 
 

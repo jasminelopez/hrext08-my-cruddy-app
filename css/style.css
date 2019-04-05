@@ -22,11 +22,14 @@ state changing styling
 	TABLE STYLING
 */
 
-table,
+table {
+	table-layout: fixed;
+}
+
 td {
-	border: 1px solid, beige;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-	width: 400px;
+	border: solid 1px black;
+	max-width: 400px;
+	word-wrap: normal;
 }
 
 thead,
@@ -52,6 +55,3 @@ label, input {
 	margin: 1px;
 }
 
-td {
-	white-space: pre;
-}
