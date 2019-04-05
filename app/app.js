@@ -34,7 +34,6 @@ $(document).ready(function () {
 		//instructions text - won't wrap in the table
 		var instructions = $('#textbox').val();
 		var key = $('#recipeName').val();
-		var $deleteButton = $('<button class="button btn btn-danger" id="btn-delete" type="button">Delete</button>');
 		var value = `${ingredients} <hr> ${instructions}`;
 
 		var keyExists = localStorage.getItem(key) !== null;
@@ -55,6 +54,12 @@ $(document).ready(function () {
 			updateStatusLabel('Recipe created - ' + key);
 		}
 		loadLocalStorage();
+
+		if(Object.keys(localStorage).length === 5) {
+			var audio = new Audio('Assets/cowbell.wav');
+			audio.play();
+			$('#myModal').modal({ show: true})
+		};
 	});
 
 	$('#btn-update').on('click', function(e) {
@@ -129,17 +134,6 @@ $(document).ready(function () {
 		$('#recipeIngredients').val('');
 		setupClickEvents();
 	});
-
-		// var corgiFunction = function () {
-		// var keys = Object.keys(localStorage)
-		// console.log(keys.length);
-		//   if(keys.length === 5) {
-
-		//   }
-		// loadLocalStorage();
-		// }
-		// corgiFunction();
-
 });
 
 /*

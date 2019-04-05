@@ -8,6 +8,7 @@
 		integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
 		crossorigin="anonymous">
 	</script>
+
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 		crossorigin="anonymous">
@@ -116,12 +117,30 @@
 					<div class="form-group">
 						<button class="button btn btn-primary" id="btn-submitRecipe" type="button">Submit Recipe</button>
 						<button class="button btn btn-primary" id="btn-update" type="button">Update Recipe</button>
+
+						<button type="button" class="btn btn-primary" data-toggle="modal">Click Me!</button>
+
+						<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+							<div class="modal-dialog">
+								<div class="modal-content">
+										<div class="modal-body">
+											<h1>Congratulations!</h1>
+											<h4>You submitted 5 recipes, time to eat!</h4>
+											<iframe src="https://giphy.com/embed/eKrDNyyYkhrfW" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+										</div>
+								</div>
+							</div>
+						</div>
 				</div>
 			</div>
 		</div>
 
 		</form>
 	</div>
+
+	<audio class="cowbell" id="cowbell">
+		<source src="../Assets/cowbell.wav"></source>
+	</audio>
 
 	<script src="app/app.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
