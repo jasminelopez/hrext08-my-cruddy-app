@@ -22,6 +22,23 @@ state changing styling
 	TABLE STYLING
 */
 
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+
+
+.app-title {
+	background-image: url( '../Assets/pantry.jpg' );
+	background-size: cover;
+	height: 400px;
+	background-position: center;
+}
+.app-title h1 {
+	color: white;
+	padding-top: 110px;
+	padding-left: 50px;
+	font-family: "Pacifico";
+	font-size: 100px;
+}
+
 table {
 	table-layout: fixed;
 }

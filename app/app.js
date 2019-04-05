@@ -2,7 +2,7 @@ var loadLocalStorage = function () {
 	var keys = Object.keys(localStorage)
 	var htmlString = '';
 	for (var i = 0; i < keys.length; i++) {
-		htmlString += `<tr><td class="recipeTitle">${keys[i]} <hr> <button class="button btn btn-danger" id="btn-delete" type="button">Delete</button>
+		htmlString += `<tr><td class="recipeTitle">${keys[i]} <hr> <button class="button btn btn-outline-danger" id="btn-delete" type="button">Delete</button>
 		</td><td class="tableCell">${localStorage[keys[i]]} </tr></tr>`;
 	}
 	$('tbody').html(htmlString)
@@ -30,7 +30,6 @@ $(document).ready(function () {
 
 	$('#btn-submitRecipe').on('click', function(e) {
 		var ingredients= $('strong.recipeString').text();
-		console.log(ingredients);
 		//instructions text - won't wrap in the table
 		var instructions = $('#textbox').val();
 		var key = $('#recipeName').val();
@@ -62,22 +61,26 @@ $(document).ready(function () {
 		};
 	});
 
+		$('.close-modal').click(function() {
+			$('#myModal').modal({ show: false})
+		});
+
 	$('#btn-update').on('click', function(e) {
 		var key = $('#recipeName').val();
 		var value = $('#recipeIngredients').val();
 		var existingValue = localStorage.getItem(key)
 		var keyExists = existingValue !== null;
 
-		// if (value === existingValue) {
-		// 	updateStatusLabel('Recipe not updated - those same ingredients already exists silly! xD')
-		// } else if (keyExists) {
-		// 	updateEntry(key, value);
-		// 	updateStatusLabel('Recipe updated - ' + key);
-		// } else if (key === '') {
-		// 	updateStatusLabel('invalid input!')
-		// } else {
-		// 	updateStatusLabel('Recipe doesn\'t exist, please use create button instead! :D');
-		// }
+		if (value === existingValue) {
+			updateStatusLabel('Recipe not updated - those same ingredients already exists silly! xD')
+		} else if (keyExists) {
+			updateEntry(key, value);
+			updateStatusLabel('Recipe updated - ' + key);
+		} else if (key === '') {
+			updateStatusLabel('invalid input!')
+		} else {
+			updateStatusLabel('Recipe doesn\'t exist, please use create button instead! :D');
+		}
 
 		loadLocalStorage();
 	});
@@ -132,7 +135,6 @@ $(document).ready(function () {
 
 		var ingredients = $('strong.recipeString').text();
 		$('#recipeIngredients').val('');
-		setupClickEvents();
 	});
 });
 

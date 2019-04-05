@@ -16,11 +16,12 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-
 	<div class="container">
 		<div class="row">
-			<div class="col app-title">
-				<h1>Recipe Tracker</h1>
+			<div class="col">
+				<div class="app-title">
+					<h1>Recipe Tracker</h1>
+				</div>
 			</div>
 		</div>
 		<div class="row">
@@ -118,15 +119,16 @@
 						<button class="button btn btn-primary" id="btn-submitRecipe" type="button">Submit Recipe</button>
 						<button class="button btn btn-primary" id="btn-update" type="button">Update Recipe</button>
 
-						<button type="button" class="btn btn-primary" data-toggle="modal">Click Me!</button>
-
 						<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
 							<div class="modal-dialog">
 								<div class="modal-content">
 										<div class="modal-body">
 											<h1>Congratulations!</h1>
-											<h4>You submitted 5 recipes, time to eat!</h4>
+											<h4>You submitted 5 recipes, time to eat!
+											</h4>
 											<iframe src="https://giphy.com/embed/eKrDNyyYkhrfW" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+
+											<button class="btn btn-primary close-modal" >Close</button>
 										</div>
 								</div>
 							</div>
@@ -134,7 +136,7 @@
 				</div>
 			</div>
 		</div>
-
+		<div id="statusLabel">Status:</div>
 		</form>
 	</div>
 
